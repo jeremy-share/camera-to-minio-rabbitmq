@@ -1,0 +1,16 @@
+# Git and Docker ignores
+.env
+.coverage
+htmlcov
+.idea
+build/
+dist/
+*.egg-info/
+VERSION_PYPI
+public/
+
+
+# Docker specific
+
+# Project
+/data/camera-capture/

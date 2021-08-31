@@ -1,0 +1,37 @@
+version: "3.7"
+
+services:
+  camera-capture:
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        FROM_IMAGE_PREFIX: ""
+        APP_BUILD_DATE: "2000-01-01T01:00:00+00:00"
+        APP_VERSION: "0.0.0"
+        APP_VERSION_TIMED: "0.0.0.0"
+        APP_VERSION_HASH: "000000"
+        APP_VERSION_STRING: "v0.0.0"
+        INSTALL_SUFFIX: "-dev"
+    environment:
+      - OUTPUT_DESTINATION=s3://my-bucket/data/camera-capture/dt={date}/cam=1/{file}
+      #- OUTPUT_DESTINATION=/opt/project/program/data/camera-capture/{file}
+      - OUTPUT_ENDPOINT=http://minio:9000
+      - AWS_ACCESS_KEY_ID=admin
+      - AWS_SECRET_ACCESS_KEY=password
+      - OUTPUT_FORMAT=jpg
+      - OUTPUT_DT_FORMAT=%Y-%m-%d
+      - OUTPUT_TIMEOUT=1
+      - OUTPUT_MAX_ATTEMPTS=0
+      - CRON_INTERVAL=second
+      - CRON_VALUE=*/5
+      - INSTANCES_MAX=1
+    volumes:
+      - ./:/opt/project/program
+    user: 1000:1000
+    networks:
+      - main
+networks:
+  main:
+    name: development
+    external: true

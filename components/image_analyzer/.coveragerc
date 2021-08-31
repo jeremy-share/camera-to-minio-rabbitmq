@@ -1,0 +1,7 @@
+[report]
+exclude_lines =
+    raise NotImplementedError
+    if __name__ == .__main__.:
+    image_analyzer.main.get_args:
+omit =
+    tests/*

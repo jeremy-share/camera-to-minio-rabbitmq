@@ -1,0 +1,17 @@
+# Git and Docker ignores
+.env
+.coverage
+htmlcov
+.idea
+build/
+dist/
+*.egg-info/
+VERSION_PYPI
+public/
+
+# Docker specific
+
+# Repo specific
+darknet/test2017.zip
+darknet/testdev2017.txt
+darknet/yolov4.weights

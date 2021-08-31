@@ -1,0 +1,6 @@
+classes= 80
+train  = /darknet/trainvalno5k.txt
+valid = /darknet/testdev2017.txt
+names = /darknet/data/coco.names
+backup = /darknet/backup
+eval=coco
